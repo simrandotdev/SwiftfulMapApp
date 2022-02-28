@@ -43,6 +43,13 @@ class LocationsViewModel: ObservableObject {
         }
     }
     
+    func showNextLocation(location: Location) {
+        withAnimation(.easeInOut) {
+            mapLocation = location
+            showLocationsList = false
+        }
+    }
+    
     private let mapSpan = MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
     private let defaultLocation = Location(
         name: "Colosseum",
