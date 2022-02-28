@@ -19,6 +19,8 @@ class LocationsViewModel: ObservableObject {
     }
     @Published var mapRegion: MKCoordinateRegion = MKCoordinateRegion()
     
+    // Show list of location
+    @Published var showLocationsList: Bool = false
     
     init() {
         self.locations = LocationsDataService.locations
@@ -32,6 +34,12 @@ class LocationsViewModel: ObservableObject {
                 center: location.coordinates,
                 span: mapSpan
             )
+        }
+    }
+    
+    func toggleLocationsList() {
+        withAnimation(.easeInOut) {
+            showLocationsList.toggle()
         }
     }
     
