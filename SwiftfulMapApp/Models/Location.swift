@@ -8,7 +8,11 @@
 import Foundation
 import CoreLocation
 
-struct Location {
+struct Location: Identifiable {
+    
+    var id: String {
+        return name + cityName
+    }
     var name: String
     var cityName: String
     var coordinates: CLLocationCoordinate2D
