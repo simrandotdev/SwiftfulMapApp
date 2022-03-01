@@ -8,7 +8,11 @@
 import Foundation
 import CoreLocation
 
-struct Location: Identifiable {
+struct Location: Identifiable, Equatable {
+    static func == (lhs: Location, rhs: Location) -> Bool {
+        return lhs.cityName == rhs.cityName && lhs.name == rhs.name && lhs.description == rhs.description
+    }
+    
     
     var id: String {
         return name + cityName
