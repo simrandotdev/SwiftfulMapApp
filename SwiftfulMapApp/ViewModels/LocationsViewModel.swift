@@ -11,6 +11,8 @@ import SwiftUI
 
 class LocationsViewModel: ObservableObject {
     
+    let mapSpan = MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
+    
     @Published var locations: [Location] = []
     @Published var mapLocation: Location {
         didSet {
@@ -21,6 +23,7 @@ class LocationsViewModel: ObservableObject {
     
     // Show list of location
     @Published var showLocationsList: Bool = false
+    @Published var sheetLocation: Location? = nil
     
     init() {
         self.locations = LocationsDataService.locations
@@ -71,7 +74,6 @@ class LocationsViewModel: ObservableObject {
         showNextLocation(location: nextLocation)
     }
     
-    private let mapSpan = MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
     private let defaultLocation = Location(
         name: "Colosseum",
         cityName: "Rome",

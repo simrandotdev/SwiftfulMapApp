@@ -25,6 +25,8 @@ struct LocationsView: View {
                 
                 locationsPreviewStack
             }
+        }.sheet(item: $vm.sheetLocation) {
+            LocationDetailView(location: $0)
         }
     }
 }
@@ -71,7 +73,7 @@ extension LocationsView {
                         vm.showNextLocation(location: location)
                     }
             }
-        }
+        }.ignoresSafeArea()
     }
     
     private var locationsPreviewStack: some View {
